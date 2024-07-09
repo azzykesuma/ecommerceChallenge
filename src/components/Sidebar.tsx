@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'; 'react-router-dom'
 import closeBtn from '../assets/images/icon-close.svg'
+import { lists } from '../lib/routes';
 type SidebarProps = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 };
@@ -10,28 +11,6 @@ const Sidebar = ({setOpen} : SidebarProps) => {
   const handleClose = () => {
     setOpen(false)
   }
-  const lists = [
-    {
-      name: 'Collections',
-      url: '/'
-    }, 
-    {
-      name: 'Men',
-      url: '/'
-    }, 
-    {
-      name: 'Women',
-      url: '/'
-    }, 
-    {
-      name: 'About',
-      url: '/'
-    }, 
-    {
-      name: 'Contact',
-      url: '/'
-    }, 
-  ]
   return (
     <motion.nav
       style={{
