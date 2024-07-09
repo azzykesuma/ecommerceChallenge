@@ -3,10 +3,11 @@ import { ReactNode } from "react";
 import CartHeader from "./ui/CartGroup/CartHeader";
 import CartFooter from "./ui/CartGroup/CartFooter";
 import CartBody from "./ui/CartGroup/CartBody";
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
 const Cart = ({children} : {children: ReactNode}) => {
   return (
     <motion.div
-      className="absolute top-16 w-[90%] left-4 rounded-lg shadow-lg min-h-[200px] flex flex-col z-50 bg-white"
+      className={`${isMobile ? 'left-4' : 'right-0'} absolute top-16 w-[90%] max-w-[350px] rounded-lg shadow-lg min-h-[200px] flex flex-col z-50 bg-white`}
       initial={{
         y: 30,
         opacity: 0,

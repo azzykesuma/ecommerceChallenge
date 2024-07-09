@@ -6,6 +6,7 @@ import Cart from "./Cart";
 import { AnimatePresence } from "framer-motion";
 import { CartContext } from "../App";
 import DesktopNavs from "./ui/DesktopNavs";
+import {motion} from "framer-motion";
 
 type headerProps = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -53,7 +54,10 @@ const Header = ({ setOpen }: headerProps) => {
             </Cart>
           )}
         </AnimatePresence>
-        <img className="w-6 h-6 rounded-full" src={profileImg} alt="profile" />
+        <motion.img
+          initial={{ scale: 1, opacity: 1, border: 'none' }}
+          whileHover={{ scale: 1.1, opacity: 0.7, border: '2px solid orange' }}
+          className="w-6 h-6 rounded-full cursor-pointer" src={profileImg} alt="profile" />
       </div>
     </header>
   );

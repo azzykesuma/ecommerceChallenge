@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { CartContext } from "../App";
 import { useContext, useEffect, useState } from "react";
 
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
 const CartSection = () => {
   const [inputQty, setInputQty] = useState(0);
   const { cart, setCart } = useContext(CartContext);
@@ -34,11 +35,11 @@ const CartSection = () => {
     localStorage.setItem("cart", JSON.stringify(cart));
   };
   return (
-    <>
-      <section className="flex items-center bg-light-grayish-blue py-2 px-6 rounded-lg justify-between">
+    <div className={isMobile ? undefined : 'grid grid-cols-[40%_60%] gap-2'}>
+      <section className=" flex items-center bg-light-grayish-blue py-0 px-6 rounded-lg justify-between">
         <motion.button
-          initial={{ scale: 1 }}
-          whileHover={{ scale: 1.1 }}
+          initial={{ scale: 1, opacity: 1}}
+          whileHover={{ scale: 1.1, opacity: 0.7}}
           whileTap={{ scale: 0.9 }}
           disabled={inputQty === 0}
           onClick={() => handleInputChange("decrement")}
@@ -46,33 +47,32 @@ const CartSection = () => {
           <img src={minusIcon} alt="reduce cart qty" />
         </motion.button>
         <input
-          className="p-2 bg-light-grayish-blue text-center"
+          className="p-2 bg-light-grayish-blue text-center w-full"
           value={inputQty}
           type="number"
           onChange={(e) => setInputQty(parseInt(e.target.value))}
         />
         <motion.button
           onClick={() => handleInputChange("increment")}
-          initial={{ scale: 1 }}
-          whileHover={{ scale: 1.1 }}
+          initial={{ scale: 1, opacity: 1}}
+          whileHover={{ scale: 1.1, opacity: 0.7}}
           whileTap={{ scale: 0.9 }}
         >
           <img src={plusIcon} alt="increase cart qty" />
         </motion.button>
       </section>
       <motion.button
-        initial={{ scale: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        initial={{ scale: 1, opacity: 1}}
+        whileHover={{ scale: 1.05, opacity: 0.7}}
+        whileTap={{ scale: 0.9, opacity: 1}}
         onClick={handleAddToCart}
-        className="bg-orange rounded-lg w-full flex justify-center p-3 gap-4 mt-3 font-bold text-very-dark-blue"
-      >
+        className={`bg-orange rounded-lg flex justify-center p-3 gap-4 ont-bold text-very-dark-blue ${isMobile ? 'mt-3' : undefined}`} >
         <span>
           <img src={cartIcon} alt="cart icon" />
         </span>
         Add to cart
       </motion.button>
-    </>
+    </div>
   );
 };
 
