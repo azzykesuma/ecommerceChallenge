@@ -7,7 +7,7 @@ const isMobile = window.matchMedia("(max-width: 768px)").matches;
 const Cart = ({children} : {children: ReactNode}) => {
   return (
     <motion.div
-      className={`${isMobile ? 'left-4' : 'right-0'} absolute top-16 w-[90%] max-w-[350px] rounded-lg shadow-lg min-h-[200px] flex flex-col z-50 bg-white`}
+      className={`${isMobile ? 'left-4' : 'right-0'} absolute top-16 w-[90%] max-w-[350px] rounded-lg shadow-xl min-h-[200px] flex flex-col z-50 bg-white`}
       initial={{
         y: 30,
         opacity: 0,

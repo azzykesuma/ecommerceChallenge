@@ -59,16 +59,22 @@ const ImageSlider = ({
   };
   const handlePrev = () => {
     const currIndex = mainImages.findIndex((image) => image.src === mainImage);
-    const prevIndex = currIndex - 1;
-    if (prevIndex < 0) return;
+    let prevIndex = currIndex - 1;
+    if(prevIndex < 0) {
+      prevIndex = mainImages.length - 1;
+    }
     handleChangeMainImage(mainImages[prevIndex].id);
   };
   const handleNext = () => {
     const currIndex = mainImages.findIndex((image) => image.src === mainImage);
-    const nextIndex = currIndex + 1;
-    if (nextIndex === mainImages.length) return;
+    let nextIndex = currIndex + 1;
+    if (nextIndex === mainImages.length) {
+      nextIndex = 0;
+    }
+
     handleChangeMainImage(mainImages[nextIndex].id);
   };
+  
 
   return (
     <div>
@@ -113,11 +119,9 @@ const ImageSlider = ({
             }`}
           >
             <motion.img
-              initial={{ opacity: 1 }}
-              whileHover={{ opacity: 0.7 }}
               src={image.src}
               alt="product"
-              className={`w-20 h-20 rounded-lg ${
+              className={`w-20 h-20 rounded-md hover:brightness-125 ${
                 currentThumbnail === image.id ? "opacity-30" : undefined
               }`}
             />

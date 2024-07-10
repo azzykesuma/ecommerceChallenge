@@ -19,6 +19,7 @@ const SliderDesktop = () => {
         selectedImageId={selectedImageId}
         showModal={() => setShowModal(true)}
       />
+
       {showModal &&
         createPortal(
           <ProductImageModal
@@ -27,6 +28,7 @@ const SliderDesktop = () => {
           />,
           document.getElementById("modalImage") as HTMLElement
         )}
+
     </div>
   );
 };

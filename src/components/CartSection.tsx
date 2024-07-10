@@ -66,7 +66,7 @@ const CartSection = () => {
         whileHover={{ scale: 1.05, opacity: 0.7}}
         whileTap={{ scale: 0.9, opacity: 1}}
         onClick={handleAddToCart}
-        className={`bg-orange rounded-lg flex justify-center p-3 gap-4 ont-bold text-very-dark-blue ${isMobile ? 'mt-3' : undefined}`} >
+        className={`bg-orange rounded-lg flex justify-center p-3 gap-4 ont-bold text-very-dark-blue ${isMobile ? 'mt-3  w-full' : undefined}`} >
         <span>
           <img src={cartIcon} alt="cart icon" />
         </span>
